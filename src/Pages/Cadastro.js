@@ -4,6 +4,8 @@ import { handleHome } from "../Router/cordinator";
 import styled from "styled-components";
 
 export default function Cadastro (props){
+  
+  const {frutas, setFrutas} = props;
   const[formulario, setFormulario]=useState({name:"", url:"", price:""})
   const navigate = useNavigate();
 
@@ -13,7 +15,10 @@ export default function Cadastro (props){
   }
   const handleClick = (event)=>{
     event.preventDefault()
-    console.log(formulario);
+    const novaFruta = {...formulario, id: Date.now()}
+    novaFruta.price = Number(novaFruta.price)
+    console.log(novaFruta);
+    setFrutas([...frutas, novaFruta])
   }
  
  

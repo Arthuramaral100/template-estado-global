@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function CardFruta({ image, name, price, id, comprar }) {
+export default function CardFruta(props) {
+  const {fruta, comprar} = props;
+  
   return (
     <CardContainer>
-      <Image src={"https://www.proativaalimentos.com.br/image/cache/catalog/img_prod/oleo-essencia-morango-100ml-fruta-puro-essencia-massagem-D_NQ_NP_960102-MLB31202671230_062019-F[1]-1000x1000.jpg"} alt={"Morango"} />
-      <p>{"Morango"}</p>
-      <p>R${10}</p>
-      <button>Comprar</button>
+      <Image src={fruta.url} alt={fruta.name} />
+      <p>{fruta.name}</p>
+      <p>R${fruta.price}</p>
+      <button onClick={() => comprar(fruta.id)}>Comprar</button>
     </CardContainer>
   );
 }
